@@ -27,7 +27,7 @@ export default {
 section {
   border-radius: 3px;
   box-sizing: border-box;
-  border: solid 1px #EDEEF1;
+  border: solid 1px #edeef1;
   background: #ffffff;
   box-shadow: 0 2px 4px 0 $border-color;
 }

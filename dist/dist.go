@@ -1,4 +1,3 @@
 package dist
 
-//go:generate togo http -package dist -output dist_gen.go
-
+//go:generate go-bindata -fs -nomemcopy -pkg=dist -prefix=files -debug=false -o=dist_gen.go files/...

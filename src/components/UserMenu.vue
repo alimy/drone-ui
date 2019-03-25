@@ -71,7 +71,7 @@ export default {
 }
 
 .user-menu.clicked {
-  outline: none
+  outline: none;
 }
 
 .user-menu .popup {

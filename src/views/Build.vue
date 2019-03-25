@@ -272,11 +272,13 @@ export default {
       if (!this.stage) return;
 
       const number = parseInt(this.$route.params.step || "1");
-      return this.stage &&
+      return (
+        this.stage &&
         this.stage.steps &&
-        this.stage.steps.find((step) => {
+        this.stage.steps.find(step => {
           return step.number === number;
-        });
+        })
+      );
     },
     shownLogs() {
       const from = Math.max(this.logs.length - this.logLimit, 0);
@@ -306,7 +308,9 @@ export default {
       return this.stage && this.stage.error;
     },
     isCollaborator() {
-      return (this.repo && this.repo.permissions && this.repo.permissions.write) || (this.user && this.user.admin) || false;
+      return (
+        (this.repo && this.repo.permissions && this.repo.permissions.write) || (this.user && this.user.admin) || false
+      );
     },
     readyToDownload() {
       return this.step && this.step.stopped && this.logsShowState === "data";
@@ -383,7 +387,6 @@ export default {
       if (stages) this.alignStages(stages, delta);
       if (output) this.actualizeShowToTop();
       if (output && outputHeader && visibilityFix) this.fixContentVisibilityInStickyOffset();
-
     },
     alignStages(stages, delta) {
       const stagesRect = stages.getBoundingClientRect();
@@ -557,9 +560,9 @@ $stages-top: 20px;
 $output-border-radius: 6px;
 
 .output {
-  color: #FFF;
+  color: #fff;
   font-size: 12px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-weight: 300;
   background-color: $terminal-color;
   border-radius: $output-border-radius;
@@ -570,7 +573,7 @@ $output-border-radius: 6px;
 
 .output.show-to-top .to-top {
   display: block;
-  margin-top: -30px
+  margin-top: -30px;
 }
 
 .output-fullscreen {

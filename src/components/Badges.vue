@@ -61,11 +61,7 @@ export default {
   }
 };
 
-const langs = [
-  ["markdown", "Markdown"],
-  ["markup", "Markup"],
-  ["ccmenu", "CCMenu"]
-];
+const langs = [["markdown", "Markdown"], ["markup", "Markup"], ["ccmenu", "CCMenu"]];
 </script>
 
 <style scoped lang="scss">

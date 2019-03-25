@@ -35,7 +35,7 @@ export default {
     Footer,
     Notifications,
     BuildsFeedPanel,
-    SystemAlert,
+    SystemAlert
   },
   computed: {
     isLicenseExceeded() {

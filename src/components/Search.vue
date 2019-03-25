@@ -113,7 +113,8 @@ export default {
         if (
           e.target.tagName === "TEXTAREA" ||
           (e.target.tagName === "INPUT" && HOTKEY_FREE_INPUT_TYPES.includes(e.target.getAttribute("type")))
-        ) return;
+        )
+          return;
 
         this.$refs.searchInput.$el.focus();
         this.stopPropagationAndPreventDefault(e);

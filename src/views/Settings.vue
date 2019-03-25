@@ -115,11 +115,11 @@ export default {
   },
   computed: {
     slug() {
-      return this.$route.params.namespace + '/' + this.$route.params.name;
+      return this.$route.params.namespace + "/" + this.$route.params.name;
     },
     repo() {
-      let repo = this.$store.state.repos[this.slug]
-      return repo && {...repo};
+      let repo = this.$store.state.repos[this.slug];
+      return repo && { ...repo };
     },
     isRoot() {
       return this.$store.state.user.data.admin;
@@ -129,12 +129,15 @@ export default {
       return this.isRoot || isAdmin;
     },
     timeoutsOptions() {
-      return timeouts.map(timeout => [timeout, timeout > 90 ? timeout / 60 + " hours" : timeout + " minutes"])
+      return timeouts.map(timeout => [timeout, timeout > 90 ? timeout / 60 + " hours" : timeout + " minutes"]);
     }
   },
   methods: {
     save() {
-      const { repo: { namespace, name }, repo } = this;
+      const {
+        repo: { namespace, name },
+        repo
+      } = this;
       const updatedRepo = { ...repo, timeout: parseInt(repo.timeout) };
       this.saving = true;
 
@@ -150,31 +153,28 @@ export default {
           this.saving = false;
         });
     },
-    disable: function (event) {
-      const {namespace, name} = this.$route.params;
-      this.$store.dispatch('disableRepo', {namespace, name});
+    disable: function(event) {
+      const { namespace, name } = this.$route.params;
+      this.$store.dispatch("disableRepo", { namespace, name });
     },
-    enable: function (event) {
-      const {namespace, name} = this.$route.params;
-      this.$store.dispatch('enableRepo', {namespace, name});
+    enable: function(event) {
+      const { namespace, name } = this.$route.params;
+      this.$store.dispatch("enableRepo", { namespace, name });
     },
-    chown: function (event) {
-      const {namespace, name} = this.repo;
-      this.$store.dispatch('chownRepo', {namespace, name});
+    chown: function(event) {
+      const { namespace, name } = this.repo;
+      this.$store.dispatch("chownRepo", { namespace, name });
     },
-    repair: function (event) {
-      const {namespace, name} = this.repo;
-      this.$store.dispatch('repairRepo', {namespace, name});
-    },
-  },
+    repair: function(event) {
+      const { namespace, name } = this.repo;
+      this.$store.dispatch("repairRepo", { namespace, name });
+    }
+  }
 };
 
 // enumerated list of timeout values for simplified
 // and touch-friendly user experience.
-const timeouts = [
-  15, 30, 60, 90, 120, 180, 240, 300, 360, 420,
-  480, 540, 600, 660, 720, 1080, 1440, 2880, 4320,
-]
+const timeouts = [15, 30, 60, 90, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 720, 1080, 1440, 2880, 4320];
 </script>
 
 <style scoped lang="scss">
